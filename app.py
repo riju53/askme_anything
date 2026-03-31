@@ -1,5 +1,5 @@
 import streamlit as st
-from langchain_huggingface import HuggingFaceEndpoint
+from langchain_huggingface import HuggingFaceEndpoint, ChatHuggingFace
 
 hf_token = st.secrets["HUGGINGFACEHUB_API_TOKEN"]
 
@@ -9,6 +9,7 @@ llm = HuggingFaceEndpoint(
     temperature=0.7,
     max_new_tokens=256
 )
+model = ChatHuggingFace(llm=llm)
 
 st.title("Askme anything 🚀")
 
@@ -20,7 +21,7 @@ if submit:
     if text.strip():
         with st.spinner("Thinking..."):
             st.write("Model loded")
-            response = llm.invoke(text)
-            st.success(response)
+            response = model.invoke(text)
+            st.write(response.content)
     else:
         st.warning("Please enter a question!")
