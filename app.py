@@ -1,7 +1,6 @@
 import streamlit as st
 from langchain_community.llms import HuggingFaceHub
 
-#hf_token = st.secrets["HUGGINGFACEHUB_API_TOKEN"]
 import os
 os.environ["HUGGINGFACEHUB_API_TOKEN"]="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"
 
