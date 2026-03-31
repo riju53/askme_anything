@@ -20,7 +20,7 @@ with st.form('my_form'):
 if submit:
     if text.strip():
         with st.spinner("Thinking..."):
-            response = model.invoke(text)
+            response = llm.invoke(text)
             st.success(response.content)
     else:
         st.warning("Please enter a question!")
