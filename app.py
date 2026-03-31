@@ -24,7 +24,7 @@ with st.form('my_form'):
 if submit:
     if text.strip():
         with st.spinner("Thinking..."):
-            response = model.invoke(text)
-            st.success(response.content)
+            response = llm.invoke(text)
+            st.success(response)
     else:
         st.warning("Please enter a question!")
