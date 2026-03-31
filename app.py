@@ -1,28 +1,29 @@
 import streamlit as st
-from langchain_community.llms import HuggingFaceHub
+from langchain_huggingface import HuggingFaceEndpoint
 
 hf_token = st.secrets["HUGGINGFACEHUB_API_TOKEN"]
 
-llm = HuggingFaceHub(
+llm = HuggingFaceEndpoint(
     repo_id="google/flan-t5-base",
     huggingfacehub_api_token=hf_token,
-    model_kwargs={
-        "temperature": 0.7,
-        "max_length": 256
-    }
+    temperature=0.7,
+    max_new_tokens=256
 )
 
 st.title("Askme anything 🚀")
 
-text = st.text_area("Enter text:")
+with st.form('my_form'):
+    text = st.text_area('Enter text:')
+    submit = st.form_submit_button('Ask')
 
-if st.button("Ask"):
+if submit:
     if text.strip():
         with st.spinner("Thinking..."):
+            st.write("Model loded")
             try:
                 response = llm.invoke(text)
-                st.write(response)
+                st.success(response)
             except Exception as e:
-                st.error(str(e))
+                st.error(f"Error: {str(e)}")
     else:
-        st.warning("Enter something!")
+        st.warning("Please enter a question!")
