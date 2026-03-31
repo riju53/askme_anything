@@ -6,7 +6,6 @@ os.environ["HUGGINGFACEHUB_API_TOKEN"]="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"
 
 llm = HuggingFaceHub(
     repo_id="google/flan-t5-base",
-    huggingfacehub_api_token=hf_token,
     model_kwargs={
         "temperature": 0.7,
         "max_length": 256
