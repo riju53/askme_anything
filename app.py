@@ -4,8 +4,8 @@ from langchain_huggingface import HuggingFaceEndpoint
 hf_token = st.secrets["HUGGINGFACEHUB_API_TOKEN"]
 
 llm = HuggingFaceEndpoint(
-    #repo_id="HuggingFaceH4/zephyr-7b-beta",
-    repo_id="google/flan-t5-base",
+    repo_id="HuggingFaceH4/zephyr-7b-beta",
+    #repo_id="google/flan-t5-base",
     huggingfacehub_api_token=hf_token,
     temperature=0.1,
     max_new_tokens=500
