@@ -20,10 +20,7 @@ if submit:
     if text.strip():
         with st.spinner("Thinking..."):
             st.write("Model loded")
-            try:
-                response = llm.invoke(text)
-                st.success(response)
-            except Exception as e:
-                st.error(f"Error: {str(e)}")
+            response = llm.invoke(text)
+            st.success(response)
     else:
         st.warning("Please enter a question!")
