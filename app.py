@@ -4,8 +4,7 @@ from langchain_huggingface import HuggingFaceEndpoint
 hf_token = st.secrets["HUGGINGFACEHUB_API_TOKEN"]
 
 llm = HuggingFaceEndpoint(
-    #repo_id="google/flan-t5-base",
-    repo_id="mistralai/Mistral-7B-Instruct-v0.2",
+    repo_id="google/flan-t5-base",
     huggingfacehub_api_token=hf_token,
     temperature=0.1,
     max_new_tokens=300
