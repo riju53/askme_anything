@@ -9,7 +9,7 @@ from langchain_huggingface import ChatHuggingFace, HuggingFaceEndpoint
 # Initialize model
 llm = HuggingFaceEndpoint(
     #repo_id="meta-llama/Llama-3.1-8B-Instruct",
-    repo_id="google/flan-t5-base"
+    repo_id="google/flan-t5-base",
     temperature=0.1,
     max_new_tokens=500
 )
