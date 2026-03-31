@@ -4,7 +4,7 @@ from langchain_huggingface import HuggingFaceEndpoint
 hf_token = st.secrets["HUGGINGFACEHUB_API_TOKEN"]
 
 llm = HuggingFaceEndpoint(
-    repo_id="google/flan-t5-large",
+    repo_id="google/flan-t5-base",  # more stable than large
     huggingfacehub_api_token=hf_token,
     temperature=0.7,
     max_new_tokens=256
@@ -22,6 +22,6 @@ if submit:
         with st.spinner("Thinking..."):
             st.write("Model loaded successfully")
             response = llm.invoke(text)
-            st.success(response.content)
+            st.success(response)
     else:
         st.warning("Please enter a question!")
