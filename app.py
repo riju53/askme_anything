@@ -20,6 +20,7 @@ with st.form('my_form'):
 if submit:
     if text.strip():
         with st.spinner("Thinking..."):
+            st.write("Model loaded successfully")
             response = llm.invoke(text)
             st.success(response.content)
     else:
