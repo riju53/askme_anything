@@ -1,26 +1,22 @@
 import streamlit as st
-from langchain_huggingface import HuggingFaceEndpoint
+from langchain_huggingface import ChatHuggingFace, HuggingFaceEndpoint
+from langchain_core.messages import HumanMessage
 
 hf_token = st.secrets["HUGGINGFACEHUB_API_TOKEN"]
 
 llm = HuggingFaceEndpoint(
     repo_id="HuggingFaceH4/zephyr-7b-beta",
-    #repo_id="google/flan-t5-base",
     huggingfacehub_api_token=hf_token,
-    temperature=0.1,
-    max_new_tokens=500
+    task="conversational",   # 🔥 IMPORTANT FIX
+    max_new_tokens=300
 )
 
-st.title("Ask me anything 🚀")
+chat = ChatHuggingFace(llm=llm)
 
-with st.form('my_form'):
-    text = st.text_area('Enter text:', '...')
-    submit = st.form_submit_button('Ask')
+st.title("Chat App 💬")
 
-if submit:
-    if text.strip():
-        with st.spinner("Thinking..."):
-            response = llm.invoke(text)
-            st.success(response)
-    else:
-        st.warning("Please enter a question!")
+text = st.text_input("Ask something")
+
+if text:
+    response = chat.invoke([HumanMessage(content=text)])
+    st.write(response.content)
