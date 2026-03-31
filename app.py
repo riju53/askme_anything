@@ -19,6 +19,7 @@ with st.form('my_form'):
 if submit:
     if text.strip():
         with st.spinner("Thinking..."):
+            st.write("Model loded")
             try:
                 response = llm.invoke(text)
                 st.success(response)
