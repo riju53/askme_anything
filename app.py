@@ -4,7 +4,7 @@ from langchain_community.llms import HuggingFaceHub
 hf_token = st.secrets["HUGGINGFACEHUB_API_TOKEN"]
 
 llm = HuggingFaceHub(
-    repo_id="google/flan-t5-base",
+    repo_id="bigscience/bloom-560m",
     huggingfacehub_api_token=hf_token,
     model_kwargs={
         "temperature": 0.7,
