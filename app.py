@@ -13,8 +13,8 @@ llm = HuggingFaceEndpoint(
 st.title("Askme anything 🚀")
 
 with st.form('my_form'):
-    text = st.text_area('Enter text:')
-    submit = st.form_submit_button('Ask')
+    text = st.text_input('Enter text:')
+    submit = st.form_submit_button('Ask me')
 
 if submit:
     if text.strip():
