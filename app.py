@@ -18,7 +18,7 @@ model = ChatHuggingFace(llm=llm)
 st.title("Ask me anything 🚀")
 
 with st.form('my_form'):
-    text = st.text_area('Enter text:', '...')
+    text = st.text_area('Enter text:')
     submit = st.form_submit_button('Ask')
 
 if submit:
